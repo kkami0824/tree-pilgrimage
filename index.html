@@ -675,30 +675,54 @@ scene.add(treeGroup);
 var starGroup;
 
 function buildTree() {
-  /* 매끈하고 포근한 7단 솜트리 + 각 층 부드러운 눈 이불 + 은은한 글로우 */
-  var tierMat = new THREE.MeshLambertMaterial({ color: 0x356b5e, emissive: 0x16332c, emissiveIntensity: 0.52 });
-  var tierSnowMat = new THREE.MeshLambertMaterial({ color: 0xf4f8ff, emissive: 0x52648c, emissiveIntensity: 0.42 });
+  /* 아까 v4 파스텔 초록색 + 크고 포근한 몽글몽글 솜뭉치 트리 */
+  var tierMat = new THREE.MeshLambertMaterial({ color: 0x3b7867, emissive: 0x1a3d34, emissiveIntensity: 0.48 });
+  var tierSnowMat = new THREE.MeshLambertMaterial({ color: 0xf4f8ff, emissive: 0x52648c, emissiveIntensity: 0.40 });
   var tiers = 7;
   for (var tr = 0; tr < tiers; tr++) {
     var u0 = tr / tiers;
     var y0 = CFG.H * (u0 * 0.87) + 1.2;
     var hTier = CFG.H * 0.23 * (1 - u0 * 0.42);
-    var rBot = treeR(y0) * 1.05;
-    var rTop = Math.max(0.6, rBot * 0.34);
+    var rBot = treeR(y0) * 0.96;
+    var rTop = Math.max(0.6, rBot * 0.36);
 
-    /* 뾰족하지 않고 둥글둥글한 층 */
-    var cone = new THREE.Mesh(new THREE.CylinderGeometry(rTop, rBot, hTier, 32, 1), tierMat);
+    var cone = new THREE.Mesh(new THREE.CylinderGeometry(rTop, rBot, hTier, 28, 1), tierMat);
     cone.position.y = y0 + hTier * 0.42;
     treeGroup.add(cone);
 
-    /* 각 층 아래 포근하게 번지는 눈 림 */
-    var puffRing = new THREE.Mesh(new THREE.TorusGeometry(rBot * 0.96, 0.72 * (1 - u0 * 0.38), 14, 32), tierSnowMat);
+    var puffRing = new THREE.Mesh(new THREE.TorusGeometry(rBot * 1.02, 0.72 * (1 - u0 * 0.36), 12, 28), tierSnowMat);
     puffRing.rotation.x = Math.PI / 2;
-    puffRing.position.y = y0 + 0.35;
+    puffRing.position.y = y0 + 0.4;
     treeGroup.add(puffRing);
   }
 
-  /* 트리 전체에 보송보송 은은한 파스텔 글로우 */
+  /* 크고 몽글몽글한 솜구름 잎 덩어리 (220개 큰 덩어리) */
+  var NF = 220;
+  var puffGeo = new THREE.SphereGeometry(1, 14, 12);
+  var frondMat = new THREE.MeshLambertMaterial({ color: 0xffffff, emissive: 0x1c3d35, emissiveIntensity: 0.38 });
+  var fronds = new THREE.InstancedMesh(puffGeo, frondMat, NF);
+  var dummy = new THREE.Object3D();
+  var col = new THREE.Color();
+  var golden = 2.39996;
+  for (var k = 0; k < NF; k++) {
+    var u = (k + 0.5) / NF;
+    var y = CFG.H * Math.pow(u, 0.86) * 0.94 + 2.2;
+    var ang = k * golden * 1.15;
+    var surf = treeR(y);
+    var rel = surf / CFG.R0;
+    var rad = surf * 0.88;
+    var sz = 1.65 + 2.35 * rel;
+    dummy.position.set(Math.cos(ang) * rad, y, Math.sin(ang) * rad);
+    dummy.scale.set(sz * 1.18, sz * 0.86, sz * 1.18);
+    dummy.updateMatrix();
+    fronds.setMatrixAt(k, dummy.matrix);
+    col.setHSL(0.42 + rnd(-0.015, 0.015), 0.38, 0.32 + 0.10 * rel);
+    fronds.setColorAt(k, col);
+  }
+  fronds.instanceMatrix.needsUpdate = true;
+  if (fronds.instanceColor) fronds.instanceColor.needsUpdate = true;
+  treeGroup.add(fronds);
+
   for (var tg = 0; tg < 5; tg++) {
     var gy = 10 + tg * 11;
     var gs = new THREE.Sprite(new THREE.SpriteMaterial({
@@ -1609,6 +1633,12 @@ var WishSky = (function () {
     MAX: MAX, TTL: WISH_TTL
   };
 })();
+
+/* 기본 보기 소원 3개 밤하늘에 띄워두기 */
+WishSky.add('올해도 우리 모두 따뜻하고 행복하기를', '별빛눈토끼', Date.now() + 86400000);
+WishSky.add('하는 일마다 술술 잘 풀리게 해주세요', '솜사탕곰', Date.now() + 86400000);
+WishSky.add('포근한 겨울밤, 좋은 일만 가득하길', '꼬마눈냥이', Date.now() + 86400000);
+
 
 var AI_WISHES = [
   '올해는 다정한 사람이 되기를',
@@ -3145,6 +3175,32 @@ window.SantaTrail = {
 };
 
 boot();
+if (location.search.indexOf('demo=push') !== -1 && pilgrims.length > 0) {
+  var dp = pilgrims[0];
+  dp.t = 0.036;
+  dp.bumped = true;
+  dp.bumpT = 0.2;
+  dp.fallPos.copy(pathPoint(dp.t));
+  dp.fallPos.addScaledVector(pathOut(dp.t), 3.2);
+  dp.fallPos.y += 1.6;
+  dp.fallVel.set(0, 0, 0);
+  dp.fallSpin.set(0, 0, 0);
+  dp.char.root.position.copy(dp.fallPos);
+  dp.char.root.rotation.set(0.45, 0.2, -0.85);
+  var ac = document.createElement('canvas'); ac.width = 256; ac.height = 160;
+  var ag = ac.getContext('2d');
+  ag.fillStyle = 'rgba(255,255,255,0.96)';
+  ag.beginPath(); ag.roundRect(24, 16, 208, 108, 42); ag.fill();
+  ag.fillStyle = '#ff4d6d'; ag.font = 'bold 64px sans-serif';
+  ag.textAlign = 'center'; ag.textBaseline = 'middle';
+  ag.fillText('악!!', 128, 72);
+  var at = new THREE.CanvasTexture(ac);
+  var as = new THREE.Sprite(new THREE.SpriteMaterial({ map: at, transparent: true, depthTest: false }));
+  as.scale.set(3.4, 2.1, 1);
+  as.position.set(0, 3.6, 0);
+  dp.char.root.add(as);
+  camRig.k = 0.14; camRig.snap = true;
+}
 
 })();
 
