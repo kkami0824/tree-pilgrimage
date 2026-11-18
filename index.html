@@ -3176,10 +3176,11 @@ window.SantaTrail = {
 
 boot();
 if (location.search.indexOf('demo=front') !== -1) {
+  cancelIntro();
   setView(false);
-  camRig.k = 0.05;
-  camRig.orbitYaw = Math.PI + 0.18;
-  camRig.pitch = 0.12;
+  camRig.k = 0.04; camRig.kT = 0.04;
+  camRig.orbitYaw = Math.PI + 0.25; camRig.orbitYawT = Math.PI + 0.25;
+  camRig.pitch = 0.06; camRig.pitchT = 0.06;
   camRig.snap = true;
 }
 
