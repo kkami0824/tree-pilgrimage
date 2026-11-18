@@ -131,7 +131,7 @@
     transition:opacity .6s ease, transform .6s ease;text-align:center;max-width:88vw;margin-bottom:8px;}
   .hint.show{opacity:1;transform:translateY(0);}
 
-  .banner{position:fixed;left:50%;top:26%;transform:translate(-50%,0) scale(.96);pointer-events:none;
+  .banner{position:fixed;left:50%;top:33%;transform:translate(-50%,0) scale(.96);pointer-events:none;
     max-width:86vw;text-align:center;padding:15px 22px;border-radius:20px;
     background:rgba(6,14,18,.5);border:1px solid rgba(255,224,160,.28);
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
@@ -196,7 +196,7 @@
     .hud .panel{max-width:620px;}
     .hud-top .panel{align-self:flex-start;}
     .hud-bottom .panel{align-self:center;width:620px;}
-    .banner{top:30%;}
+    .banner{top:36%;}
     .card{margin-bottom:0;}
     .sheet{align-items:center;}
     .toast{top:calc(env(safe-area-inset-top,0px) + 150px);}
@@ -1510,8 +1510,8 @@ var WishSky = (function () {
 
   function slot(i) {
     var ang = (i * 2.39996) % TAU;
-    var r = 4.0 + (i % 3) * 3.4;
-    var y = CFG.H + 8.6 + (i % 4) * 3.4;
+    var r = 3.2 + (i % 3) * 3.0;
+    var y = CFG.H + 10.5 + (i % 4) * 4.6;
     return new V3(Math.cos(ang) * r, y, Math.sin(ang) * r);
   }
 
@@ -1525,7 +1525,7 @@ var WishSky = (function () {
     if (items.length >= MAX) removeAt(0);
 
     var tex = makeLabel(text, nick);
-    var h = 4.6, w = h * (1024 / 360);
+    var h = 9.4, w = h * (1024 / 360);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({
       map: tex, transparent: true, opacity: 0, depthWrite: false, fog: false
     }));
@@ -1859,9 +1859,9 @@ function desiredCamera(outPos, outLook) {
   if (k > 0.001) {
     var rl = Math.hypot(mePos.x, mePos.z) || 1;
     var rx = mePos.x / rl, rz = mePos.z / rl;
-    var dTree = CFG.R0 * 3.2 + 46;
+    var dTree = CFG.R0 * 3.4 + 52;
     _tA.set(rx * dTree, CFG.H * 0.42, rz * dTree);
-    _tB.set(0, CFG.H * 0.52, 0);
+    _tB.set(0, CFG.H * 0.55, 0);
     outPos.lerp(_tA, k);
     outLook.lerp(_tB, k);
   }
@@ -2431,7 +2431,7 @@ function updateFX(dt) {
   } else {
     FX.snow = lerp(FX.snow, 0, 1 - Math.exp(-dt * 1.1));
   }
-  scene.fog.density = 0.0050 + 0.0055 * FX.snow;
+  scene.fog.density = 0.0050 + 0.0026 * FX.snow;
 
   if (puff.active) {
     puff.t += dt;
@@ -3109,6 +3109,7 @@ window.SantaTrail = {
   wishSky: WishSky,
   aiWish: function () { return aiWish(); },
   attachedList: function () { return attached.map(function (a) { return a.type; }); },
+  tick: function (sec) { var n = Math.max(1, Math.round((sec || 0.05) / 0.05)); for (var i = 0; i < n; i++) update(0.05); },
   reset: function () { state.atSummit = false; state.bursting = false; resetMe(true); }
 };
 
