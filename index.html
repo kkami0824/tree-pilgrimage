@@ -25,110 +25,109 @@
     mix-blend-mode:screen;}
   .frost.on{opacity:.85;}
 
-  .hud{position:fixed;left:0;right:0;pointer-events:none;display:flex;flex-direction:column;gap:8px;padding:0 12px;}
-  .hud-top{top:0;padding-top:calc(env(safe-area-inset-top,0px) + 10px);}
-  .hud-bottom{bottom:0;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 10px);}
+  .hud{position:fixed;left:0;right:0;pointer-events:none;display:flex;flex-direction:column;gap:6px;padding:0 10px;}
+  .hud-top{top:0;padding-top:calc(env(safe-area-inset-top,0px) + 8px);}
+  .hud-bottom{bottom:0;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 8px);}
 
   .panel{
     pointer-events:auto;
-    background:rgba(4,11,15,.46);
-    border:1px solid rgba(150,205,198,.13);
-    border-radius:18px;
-    backdrop-filter:blur(14px) saturate(125%);
-    -webkit-backdrop-filter:blur(14px) saturate(125%);
-    box-shadow:0 10px 30px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.04);
+    background:rgba(24,32,58,.48);
+    border:1px solid rgba(220,232,255,.22);
+    border-radius:16px;
+    backdrop-filter:blur(12px) saturate(125%);
+    -webkit-backdrop-filter:blur(12px) saturate(125%);
+    box-shadow:0 8px 24px rgba(10,14,32,.28), inset 0 1px 0 rgba(255,255,255,.08);
   }
-  .topbar{padding:10px 13px;display:flex;flex-direction:column;gap:7px;}
-  .trow{display:flex;align-items:center;gap:8px;min-width:0;}
-  .brand{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;letter-spacing:-.2px;color:#e6f2ea;white-space:nowrap;}
-  .brand .dot{width:7px;height:7px;border-radius:50%;background:#ffd36b;box-shadow:0 0 10px #ffcf5e;}
+  .topbar{padding:7px 11px;display:flex;flex-direction:column;gap:4px;}
+  .trow{display:flex;align-items:center;gap:6px;min-width:0;}
+  .brand{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;letter-spacing:-.2px;color:#f5f7ff;white-space:nowrap;}
+  .brand .dot{width:7px;height:7px;border-radius:50%;background:#ffe28a;box-shadow:0 0 10px #ffe28a;}
   .spacer{flex:1;}
-  .chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#c6dcd6;letter-spacing:-.2px;white-space:nowrap;
-    padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.055);border:1px solid rgba(150,205,198,.13);
+  .chip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;color:#e4ecff;letter-spacing:-.2px;white-space:nowrap;
+    padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(220,232,255,.18);
     overflow:hidden;text-overflow:ellipsis;}
-  .chip b{color:#ffe0a0;font-weight:700;font-variant-numeric:tabular-nums;}
-  .chip.me b{color:#e8f6ff;font-weight:650;}
-  .chip .of{color:#8fa8a2;font-weight:600;font-size:11px;}
-  .status{font-size:12px;color:#bdd2ca;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .status b{color:#ffe0a0;font-weight:700;}
-  .status .live{display:inline-block;width:6px;height:6px;border-radius:50%;background:#7ff0c0;margin-right:5px;
-    box-shadow:0 0 8px #58e8b0;animation:pulse 2.8s ease-in-out infinite;vertical-align:1px;}
-  @keyframes pulse{0%,100%{opacity:.3;transform:scale(.85)}50%{opacity:1;transform:scale(1.12)}}
+  .chip b{color:#ffe6a8;font-weight:700;font-variant-numeric:tabular-nums;}
+  .chip.me b{color:#ffffff;font-weight:650;}
+  .chip .of{color:#b6c4e0;font-weight:600;font-size:10.5px;}
+  .status{font-size:11.5px;color:#dbe6ff;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .status b{color:#ffe6a8;font-weight:700;}
+  .status .live{display:inline-block;width:6px;height:6px;border-radius:50%;background:#9ff5d4;margin-right:5px;
+    box-shadow:0 0 8px #9ff5d4;animation:pulse 2.8s ease-in-out infinite;vertical-align:1px;}
+  @keyframes pulse{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.12)}}
 
-  .prog{padding:11px 13px 12px;}
-  .prog-top{display:flex;align-items:baseline;gap:8px;margin-bottom:7px;}
-  .prog-label{font-size:12px;color:#9fb6b0;letter-spacing:-.2px;}
-  .prog-pct{margin-left:auto;font-size:15px;font-weight:800;color:#ffe3ac;letter-spacing:-.4px;font-variant-numeric:tabular-nums;}
-  .prog-pct span{font-size:11px;font-weight:600;color:#9fb6b0;margin-left:2px;}
-  .track{height:5px;border-radius:3px;background:rgba(255,255,255,.09);overflow:hidden;}
-  .fill{height:100%;width:0%;border-radius:3px;
-    background:linear-gradient(90deg,#6fe0b8,#ffe39a 55%,#ffb37a);
-    box-shadow:0 0 12px rgba(255,214,120,.45);transition:width .25s linear;}
-  .pace{margin-top:8px;font-size:11.5px;color:#93aaa4;letter-spacing:-.2px;display:flex;align-items:center;gap:6px;
+  .prog{padding:7px 11px 8px;}
+  .prog-top{display:flex;align-items:baseline;gap:6px;margin-bottom:4px;}
+  .prog-label{font-size:11px;color:#c9d6f0;letter-spacing:-.2px;}
+  .prog-pct{margin-left:auto;font-size:13.5px;font-weight:800;color:#ffebb8;letter-spacing:-.4px;font-variant-numeric:tabular-nums;}
+  .prog-pct span{font-size:10.5px;font-weight:600;color:#c9d6f0;margin-left:2px;}
+  .track{height:4px;border-radius:2px;background:rgba(255,255,255,.14);overflow:hidden;}
+  .fill{height:100%;width:0%;border-radius:2px;
+    background:linear-gradient(90deg,#a8f0d8,#ffeaa8 55%,#ffc2d4);
+    box-shadow:0 0 10px rgba(255,224,160,.45);transition:width .25s linear;}
+  .pace{margin-top:5px;font-size:10.5px;color:#c2cfe8;letter-spacing:-.2px;display:flex;align-items:center;gap:5px;
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .pace i{width:5px;height:5px;border-radius:50%;background:#7ff0c4;display:inline-block;opacity:.9;flex:0 0 auto;}
+  .pace i{width:4px;height:4px;border-radius:50%;background:#a8f0d8;display:inline-block;opacity:.9;flex:0 0 auto;}
 
-  .controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .controls{display:flex;flex-wrap:nowrap;align-items:center;gap:5px;overflow-x:auto;}
   .controls > button{flex:0 0 auto;}
-  .zoomer{display:flex;align-items:center;gap:6px;flex:1 1 168px;min-width:150px;
-    padding:4px 8px;border-radius:14px;background:rgba(255,255,255,.045);border:1px solid rgba(150,205,198,.12);}
+  .zoomer{display:flex;align-items:center;gap:4px;flex:1 1 110px;min-width:105px;
+    padding:2px 6px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(220,232,255,.16);}
   button{
-    font:inherit;font-size:12.5px;font-weight:650;letter-spacing:-.25px;color:#e6f2ec;
-    background:rgba(255,255,255,.07);border:1px solid rgba(175,225,210,.17);
-    border-radius:13px;padding:0 13px;height:44px;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    font:inherit;font-size:11.5px;font-weight:650;letter-spacing:-.25px;color:#f5f7ff;
+    background:rgba(255,255,255,.10);border:1px solid rgba(220,232,255,.22);
+    border-radius:11px;padding:0 10px;height:36px;display:inline-flex;align-items:center;justify-content:center;gap:4px;
     cursor:pointer;transition:transform .12s ease, background .2s ease, border-color .2s ease;
     white-space:nowrap;
   }
-  button:hover{background:rgba(255,255,255,.11);}
-  button:active{transform:scale(.955);background:rgba(255,255,255,.17);}
-  button.primary{background:linear-gradient(180deg,rgba(255,222,142,.97),rgba(255,176,92,.94));color:#2a1a06;
-    border-color:rgba(255,236,190,.7);box-shadow:0 6px 18px rgba(255,170,70,.26);}
-  button.primary:hover{background:linear-gradient(180deg,#ffe6a8,#ffb968);}
-  button.on{border-color:rgba(127,240,196,.55);background:rgba(127,240,196,.16);color:#d9fff0;}
-  .zbtn{width:34px;height:34px;min-height:34px;padding:0;border-radius:11px;font-size:16px;font-weight:700;
-    background:rgba(255,255,255,.06);border-color:rgba(175,225,210,.15);}
-  input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;height:32px;flex:1;min-width:60px;margin:0;cursor:pointer;}
+  button:hover{background:rgba(255,255,255,.16);}
+  button:active{transform:scale(.955);background:rgba(255,255,255,.22);}
+  button.primary{background:linear-gradient(180deg,rgba(255,232,174,.97),rgba(255,196,138,.94));color:#33200a;
+    border-color:rgba(255,244,214,.75);box-shadow:0 6px 18px rgba(255,190,120,.26);}
+  button.primary:hover{background:linear-gradient(180deg,#ffefc2,#ffcb98);}
+  button.on{border-color:rgba(168,240,216,.65);background:rgba(168,240,216,.20);color:#eafff6;}
+  .zbtn{width:28px;height:28px;min-height:28px;padding:0;border-radius:9px;font-size:14px;font-weight:700;
+    background:rgba(255,255,255,.10);border-color:rgba(220,232,255,.2);}
+  input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;height:28px;flex:1;min-width:44px;margin:0;cursor:pointer;}
   input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;
-    background:linear-gradient(90deg,rgba(255,227,154,.35),rgba(127,240,196,.5) 60%,rgba(255,255,255,.12));}
-  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;border-radius:50%;
-    background:#eef3f2;border:2px solid rgba(127,240,196,.75);margin-top:-6.5px;box-shadow:0 2px 8px rgba(0,0,0,.55);}
-  input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:rgba(255,255,255,.16);}
-  input[type=range]::-moz-range-thumb{width:15px;height:15px;border:2px solid rgba(127,240,196,.75);border-radius:50%;background:#eef3f2;}
+    background:linear-gradient(90deg,rgba(255,234,168,.45),rgba(168,240,216,.55) 60%,rgba(255,255,255,.18));}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+    background:#ffffff;border:2px solid rgba(168,240,216,.85);margin-top:-5.5px;box-shadow:0 2px 8px rgba(0,0,0,.45);}
+  input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:rgba(255,255,255,.2);}
+  input[type=range]::-moz-range-thumb{width:14px;height:14px;border:2px solid rgba(168,240,216,.85);border-radius:50%;background:#ffffff;}
 
-  /* ---------- 가상 조이스틱 ---------- */
-  .joy{position:fixed;left:14px;bottom:calc(env(safe-area-inset-bottom,0px) + 210px);
-    width:112px;height:112px;border-radius:50%;z-index:6;touch-action:none;
+  .joy{position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 122px);
+    width:90px;height:90px;border-radius:50%;z-index:6;touch-action:none;
     display:flex;align-items:center;justify-content:center;
-    background:radial-gradient(circle at 50% 42%, rgba(30,56,66,.42), rgba(4,12,17,.5) 72%);
-    border:1px solid rgba(150,215,225,.18);
-    box-shadow:0 8px 26px rgba(0,0,0,.36), inset 0 0 22px rgba(110,190,215,.07);
+    background:radial-gradient(circle at 50% 42%, rgba(56,72,118,.42), rgba(20,28,52,.48) 72%);
+    border:1px solid rgba(220,232,255,.24);
+    box-shadow:0 8px 22px rgba(10,14,32,.32), inset 0 0 18px rgba(200,225,255,.08);
     backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
-    opacity:.9;transition:opacity .3s ease, border-color .3s ease;}
-  .joy.act{opacity:1;border-color:rgba(150,225,235,.4);}
-  .joy .ring{position:absolute;inset:23px;border-radius:50%;border:1px dashed rgba(150,215,225,.16);}
-  .joy .ar{position:absolute;font-size:10px;color:rgba(160,210,215,.5);letter-spacing:0;}
-  .joy .ar.l{left:9px;top:50%;transform:translateY(-50%);}
-  .joy .ar.r{right:9px;top:50%;transform:translateY(-50%);}
-  .joy .ar.u{top:7px;left:50%;transform:translateX(-50%);}
-  .joy .ar.d{bottom:7px;left:50%;transform:translateX(-50%);}
-  .joy .knob{width:52px;height:52px;border-radius:50%;position:relative;
-    background:radial-gradient(circle at 38% 32%, #fffaf0, #d3e4ea 55%, #93b3c2);
-    box-shadow:0 6px 16px rgba(0,0,0,.45), 0 0 18px rgba(170,235,250,.28);
+    opacity:.88;transition:opacity .3s ease, border-color .3s ease;}
+  .joy.act{opacity:1;border-color:rgba(220,236,255,.5);}
+  .joy .ring{position:absolute;inset:18px;border-radius:50%;border:1px dashed rgba(220,232,255,.2);}
+  .joy .ar{position:absolute;font-size:9px;color:rgba(225,235,255,.55);letter-spacing:0;}
+  .joy .ar.l{left:7px;top:50%;transform:translateY(-50%);}
+  .joy .ar.r{right:7px;top:50%;transform:translateY(-50%);}
+  .joy .ar.u{top:5px;left:50%;transform:translateX(-50%);}
+  .joy .ar.d{bottom:5px;left:50%;transform:translateX(-50%);}
+  .joy .knob{width:40px;height:40px;border-radius:50%;position:relative;
+    background:radial-gradient(circle at 38% 32%, #ffffff, #e4ecff 55%, #b8c8eb);
+    box-shadow:0 4px 12px rgba(10,14,32,.38), 0 0 14px rgba(220,235,255,.35);
     transition:transform .2s cubic-bezier(.2,.9,.25,1);}
   .joy.act .knob{transition:none;}
 
-  .ret{position:fixed;left:50%;transform:translate(-50%,10px);bottom:calc(env(safe-area-inset-bottom,0px) + 252px);
-    padding:0 16px;height:38px;border-radius:999px;font-size:12.5px;font-weight:700;letter-spacing:-.25px;
-    background:rgba(10,22,29,.72);border:1px solid rgba(255,224,160,.38);color:#ffeccb;
+  .ret{position:fixed;left:50%;transform:translate(-50%,10px);bottom:calc(env(safe-area-inset-bottom,0px) + 148px);
+    padding:0 14px;height:34px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:-.25px;
+    background:rgba(24,32,58,.72);border:1px solid rgba(255,230,170,.45);color:#fff2d4;
     backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    box-shadow:0 8px 26px rgba(0,0,0,.4), 0 0 26px rgba(255,208,120,.12);
+    box-shadow:0 8px 24px rgba(10,14,32,.35);
     opacity:0;pointer-events:none;transition:opacity .3s ease, transform .3s ease;z-index:7;}
   .ret.show{opacity:1;pointer-events:auto;transform:translate(-50%,0);}
 
-  .hint{align-self:center;pointer-events:none;font-size:11.5px;color:#b3cbc4;letter-spacing:-.25px;
-    padding:7px 14px;border-radius:999px;background:rgba(4,12,17,.5);border:1px solid rgba(150,205,198,.12);
+  .hint{align-self:center;pointer-events:none;font-size:11px;color:#e6eeff;letter-spacing:-.25px;
+    padding:5px 12px;border-radius:999px;background:rgba(24,32,58,.48);border:1px solid rgba(220,232,255,.18);
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transform:translateY(6px);
-    transition:opacity .6s ease, transform .6s ease;text-align:center;max-width:88vw;margin-bottom:8px;}
+    transition:opacity .6s ease, transform .6s ease;text-align:center;max-width:88vw;margin-bottom:4px;}
   .hint.show{opacity:1;transform:translateY(0);}
 
   .banner{position:fixed;left:50%;top:33%;transform:translate(-50%,0) scale(.96);pointer-events:none;
@@ -208,8 +207,8 @@
     button{font-size:12px;padding:0 10px;}
     .brand{font-size:12.5px;}
     .status{font-size:11.5px;}
-    .joy{width:104px;height:104px;bottom:calc(env(safe-area-inset-bottom,0px) + 214px);}
-    .joy .knob{width:44px;height:44px;}
+    .joy{width:86px;height:86px;bottom:calc(env(safe-area-inset-bottom,0px) + 120px);}
+    .joy .knob{width:38px;height:38px;}
   }
 </style>
 </head>
@@ -311,7 +310,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 </script>
 <script>
 /* =========================================================
-   성탄 순례길 v3 — 전구가 주인공인 겨울밤 눈사람 순례길
+   성탄 순례길 v4 — 전구가 주인공인 겨울밤 눈사람 순례길
    · 아주 느긋한 자동 걷기 + 4마리 폭의 넓은 길
    · 오너먼트 7개 → 눈사람 몸에 하나씩 장식이 달림
    · 엄지 하나로 쓰는 가상 조이스틱 (위 3D 영역 드래그 = 카메라 회전)
@@ -347,13 +346,12 @@ var CFG = {
 };
 
 var PALETTE = [
-  { name: '따뜻한 노랑', hex: 0xffab1f, tint: 0xffd36b },
-  { name: '빨강', hex: 0xff2f3f, tint: 0xff6b6b },
-  { name: '민트', hex: 0x1fe0a0, tint: 0x7bf0c4 },
-  { name: '하늘', hex: 0x2f9bff, tint: 0x8ed2ff },
-  { name: '코랄', hex: 0xff6a35, tint: 0xff9a76 },
-  { name: '라일락', hex: 0x9a6bff, tint: 0xc6a8ff },
-  { name: '연둣빛', hex: 0x9ae02a, tint: 0xc2f07a }
+  { name: '버터 옐로', hex: 0xffe599 },
+  { name: '베이비 핑크', hex: 0xffb3c9 },
+  { name: '민트',       hex: 0x9ef0d6 },
+  { name: '스카이 블루', hex: 0xa6d8ff },
+  { name: '라벤더',     hex: 0xcfbaff },
+  { name: '피치',       hex: 0xffc6a8 }
 ];
 
 function treeR(y) {
@@ -390,22 +388,22 @@ var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha:
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.04;
+renderer.toneMappingExposure = 1.12;
 
 var scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x050d14, 0.0050);
+scene.fog = new THREE.FogExp2(0x212c4d, 0.0033);
 
 var camera = new THREE.PerspectiveCamera(56, 1, 0.1, 1500);
 
 /* ---------- 조명 (차분한 밤) ---------- */
-var hemi = new THREE.HemisphereLight(0x6d90bb, 0x070c14, 0.62);
+var hemi = new THREE.HemisphereLight(0xb8ccff, 0x3b486e, 1.08);
 scene.add(hemi);
 
-var moonDir = new THREE.DirectionalLight(0xc6d7f0, 0.95);
+var moonDir = new THREE.DirectionalLight(0xfff1dc, 1.15);
 moonDir.position.set(-70, 110, 60);
 scene.add(moonDir);
 
-var fill = new THREE.DirectionalLight(0x33556f, 0.20);
+var fill = new THREE.DirectionalLight(0x88a8e6, 0.42);
 fill.position.set(60, 30, -80);
 scene.add(fill);
 
@@ -490,12 +488,12 @@ var TEX_SHADOW = charShadowTex();
 function buildSky() {
   var c = makeCanvas(8, 512), g = c.getContext('2d');
   var grd = g.createLinearGradient(0, 0, 0, 512);
-  grd.addColorStop(0.00, '#010207');
-  grd.addColorStop(0.26, '#02060e');
-  grd.addColorStop(0.50, '#040b16');
-  grd.addColorStop(0.72, '#061119');
-  grd.addColorStop(0.87, '#081820');
-  grd.addColorStop(1.00, '#061219');
+  grd.addColorStop(0.00, '#141b36');
+  grd.addColorStop(0.28, '#1d274b');
+  grd.addColorStop(0.55, '#293663');
+  grd.addColorStop(0.78, '#364576');
+  grd.addColorStop(0.92, '#445386');
+  grd.addColorStop(1.00, '#384675');
   g.fillStyle = grd; g.fillRect(0, 0, 8, 512);
   var tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
@@ -505,88 +503,138 @@ function buildSky() {
   );
   scene.add(sky);
 
-  var n = 1100, pos = new Float32Array(n * 3), col = new Float32Array(n * 3);
+  var n = 900, pos = new Float32Array(n * 3), col = new Float32Array(n * 3);
   for (var i = 0; i < n; i++) {
     var u = Math.random() * TAU, v = Math.acos(rnd(-0.05, 1));
     var r = 720;
     pos[i * 3] = Math.sin(v) * Math.cos(u) * r;
     pos[i * 3 + 1] = Math.cos(v) * r + 30;
     pos[i * 3 + 2] = Math.sin(v) * Math.sin(u) * r;
-    var b = rnd(0.18, 0.7), tint = Math.random();
-    col[i * 3] = b * (0.85 + 0.15 * tint);
-    col[i * 3 + 1] = b * 0.93;
+    var b = rnd(0.35, 0.9), tint = Math.random();
+    col[i * 3] = b * (0.9 + 0.1 * tint);
+    col[i * 3 + 1] = b * 0.94;
     col[i * 3 + 2] = b;
   }
   var gs = new THREE.BufferGeometry();
   gs.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   gs.setAttribute('color', new THREE.BufferAttribute(col, 3));
   var stars = new THREE.Points(gs, new THREE.PointsMaterial({
-    size: 2.6, map: TEX_GLOW, vertexColors: true, transparent: true, opacity: 0.62,
+    size: 2.8, map: TEX_GLOW, vertexColors: true, transparent: true, opacity: 0.72,
     depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: false, fog: false
   }));
   stars.frustumCulled = false;
   scene.add(stars);
 
-  var moon = new THREE.Mesh(new THREE.CircleGeometry(9, 40), new THREE.MeshBasicMaterial({ color: 0xc6d4e6, fog: false }));
-  moon.position.set(-215, 165, -420);
+  var moon = new THREE.Mesh(new THREE.CircleGeometry(10, 40), new THREE.MeshBasicMaterial({ color: 0xfff3d8, fog: false }));
+  moon.position.set(-210, 165, -420);
   moon.lookAt(0, 30, 0);
   scene.add(moon);
   var halo = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: TEX_GLOW, color: 0x8fb2dd, transparent: true, opacity: 0.20,
+    map: TEX_GLOW, color: 0xffdfad, transparent: true, opacity: 0.28,
     blending: THREE.AdditiveBlending, depthWrite: false, fog: false
   }));
-  halo.scale.set(96, 96, 1);
+  halo.scale.set(110, 110, 1);
   halo.position.copy(moon.position);
   scene.add(halo);
 }
 buildSky();
 
 /* ---------- 땅 ---------- */
+function makeCottage(scale) {
+  var g = new THREE.Group();
+  var wallMat = new THREE.MeshStandardMaterial({ color: 0xffe8d6, roughness: 0.85, emissive: 0x2b2018, emissiveIntensity: 0.25 });
+  var roofMat = new THREE.MeshStandardMaterial({ color: 0xf4f8ff, roughness: 0.8, emissive: 0x3a4868, emissiveIntensity: 0.28 });
+  var trimMat = new THREE.MeshStandardMaterial({ color: 0xba8b73, roughness: 0.9 });
+  var winMat = new THREE.MeshBasicMaterial({ color: 0xffe48f });
+  var body = new THREE.Mesh(new THREE.BoxGeometry(4.2, 2.8, 3.6), wallMat);
+  body.position.y = 1.4;
+  g.add(body);
+  var roof = new THREE.Mesh(new THREE.ConeGeometry(3.55, 2.4, 4), roofMat);
+  roof.position.y = 3.9;
+  roof.rotation.y = Math.PI / 4;
+  g.add(roof);
+  var chim = new THREE.Mesh(new THREE.BoxGeometry(0.65, 1.2, 0.65), trimMat);
+  chim.position.set(1.0, 4.1, -0.5);
+  g.add(chim);
+  var door = new THREE.Mesh(new THREE.BoxGeometry(0.85, 1.5, 0.12), trimMat);
+  door.position.set(0, 0.75, 1.82);
+  g.add(door);
+  [-1.15, 1.15].forEach(function (wx) {
+    var w = new THREE.Mesh(new THREE.PlaneGeometry(0.72, 0.72), winMat);
+    w.position.set(wx, 1.65, 1.82);
+    g.add(w);
+  });
+  var wSide = new THREE.Mesh(new THREE.PlaneGeometry(0.75, 0.75), winMat);
+  wSide.position.set(2.12, 1.65, 0);
+  wSide.rotation.y = Math.PI / 2;
+  g.add(wSide);
+  var wg = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: TEX_GLOW, color: 0xffd778, transparent: true, opacity: 0.42,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  }));
+  wg.scale.set(9, 7, 1);
+  wg.position.set(0, 1.8, 2.2);
+  g.add(wg);
+  g.scale.setScalar(scale || 1);
+  return g;
+}
+
 function buildGround() {
   var geo = new THREE.CircleGeometry(760, 72);
   var pos = geo.attributes.position;
   for (var i = 0; i < pos.count; i++) {
     var x = pos.getX(i), y = pos.getY(i);
     var r = Math.hypot(x, y);
-    if (r > 2) pos.setZ(i, Math.sin(x * 0.02) * 1.2 + Math.cos(y * 0.017) * 1.6 + Math.sin(r * 0.06) * 0.8);
+    if (r > 2) pos.setZ(i, Math.sin(x * 0.02) * 1.1 + Math.cos(y * 0.017) * 1.4 + Math.sin(r * 0.06) * 0.7);
   }
   geo.computeVertexNormals();
   var ground = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({
-    color: 0x536782, roughness: 1.0, metalness: 0.0
+    color: 0x9bb0cf, roughness: 0.95, metalness: 0.0, emissive: 0x1e2942, emissiveIntensity: 0.28
   }));
   ground.rotation.x = -Math.PI / 2;
   ground.position.y = -0.55;
   scene.add(ground);
 
   for (var k = 0; k < 18; k++) {
-    var a = Math.random() * TAU, d = rnd(90, 340);
-    var s = rnd(18, 52);
+    var a = Math.random() * TAU, d = rnd(90, 320);
+    var s = rnd(18, 50);
     var mound = new THREE.Mesh(new THREE.SphereGeometry(1, 12, 8),
-      new THREE.MeshStandardMaterial({ color: 0x66798f, roughness: 1 }));
+      new THREE.MeshStandardMaterial({ color: 0xb1c3de, roughness: 0.95, emissive: 0x202c48, emissiveIntensity: 0.25 }));
     mound.position.set(Math.cos(a) * d, -4, Math.sin(a) * d);
-    mound.scale.set(s, s * rnd(0.12, 0.24), s * rnd(0.6, 1.1));
+    mound.scale.set(s, s * rnd(0.12, 0.22), s * rnd(0.6, 1.1));
     scene.add(mound);
   }
 
-  var count = 150;
+  /* 따뜻한 불빛이 켜진 작은 눈 덮인 집들 */
+  var houseAngles = [0.3, 1.05, 1.85, 2.65, 3.45, 4.2, 5.05, 5.75];
+  houseAngles.forEach(function (ha, idx) {
+    var hd = rnd(42, 96);
+    var c = makeCottage(rnd(1.05, 1.55));
+    c.position.set(Math.cos(ha) * hd, -0.5, Math.sin(ha) * hd);
+    c.lookAt(0, 0, 0);
+    c.rotateY(rnd(-0.5, 0.5));
+    scene.add(c);
+  });
+
+  var count = 130;
   var pine = new THREE.InstancedMesh(new THREE.ConeGeometry(1, 1, 7),
-    new THREE.MeshStandardMaterial({ color: 0x091a15, roughness: 1 }), count);
+    new THREE.MeshStandardMaterial({ color: 0x2d5a4c, roughness: 0.92 }), count);
   var pineSnow = new THREE.InstancedMesh(new THREE.ConeGeometry(1, 1, 7),
-    new THREE.MeshStandardMaterial({ color: 0x6d8299, roughness: 1, emissive: 0x0a141c, emissiveIntensity: 0.3 }), count);
+    new THREE.MeshStandardMaterial({ color: 0xdce6f5, roughness: 0.9, emissive: 0x26324d, emissiveIntensity: 0.25 }), count);
   var dummy = new THREE.Object3D();
   for (var j = 0; j < count; j++) {
-    var ang = Math.random() * TAU, dist = rnd(58, 330);
-    var hh = rnd(6, 15) * (0.75 + dist / 330 * 1.1);
-    var w = hh * rnd(0.26, 0.34);
+    var ang = Math.random() * TAU, dist = rnd(58, 300);
+    var hh = rnd(6, 14) * (0.75 + dist / 300 * 1.0);
+    var w = hh * rnd(0.32, 0.42);
     dummy.position.set(Math.cos(ang) * dist, hh * 0.5 - 2, Math.sin(ang) * dist);
     dummy.rotation.set(0, Math.random() * TAU, 0);
     dummy.scale.set(w, hh, w);
     dummy.updateMatrix();
     pine.setMatrixAt(j, dummy.matrix);
 
-    var tipH = hh * 0.34;
+    var tipH = hh * 0.36;
     dummy.position.y = hh * 0.5 - 2 + hh * 0.5 - tipH * 0.5;
-    dummy.scale.set(w * 0.40, tipH, w * 0.40);
+    dummy.scale.set(w * 0.44, tipH, w * 0.44);
     dummy.updateMatrix();
     pineSnow.setMatrixAt(j, dummy.matrix);
   }
@@ -605,79 +653,52 @@ scene.add(treeGroup);
 var starGroup;
 
 function buildTree() {
-  var pts = [];
-  for (var i = 0; i <= 44; i++) {
-    var t = i / 44;
-    var y = CFG.H * t;
-    pts.push(new THREE.Vector2(Math.max(0.02, treeR(y) * 0.93), y));
+  /* 몽글몽글 층진 귀여운 트리 몸체 (7단 둥근 잎층 + 눈 테두리) */
+  var tierMat = new THREE.MeshStandardMaterial({ color: 0x2a5a4e, roughness: 0.9, metalness: 0.0, emissive: 0x0c1e1a, emissiveIntensity: 0.3 });
+  var tierSnowMat = new THREE.MeshStandardMaterial({ color: 0xeaf2ff, roughness: 0.85, emissive: 0x283654, emissiveIntensity: 0.25 });
+  var tiers = 7;
+  for (var tr = 0; tr < tiers; tr++) {
+    var u0 = tr / tiers;
+    var y0 = CFG.H * (u0 * 0.88) + 1.5;
+    var hTier = CFG.H * 0.22 * (1 - u0 * 0.45);
+    var rBot = treeR(y0) * 1.06;
+    var cone = new THREE.Mesh(new THREE.ConeGeometry(rBot, hTier, 24, 1), tierMat);
+    cone.position.y = y0 + hTier * 0.42;
+    treeGroup.add(cone);
+
+    /* 몽글몽글한 눈 림 (각 층 아래 테두리) */
+    var puffRing = new THREE.Mesh(new THREE.TorusGeometry(rBot * 0.94, 0.55 * (1 - u0 * 0.45), 10, 24), tierSnowMat);
+    puffRing.rotation.x = Math.PI / 2;
+    puffRing.position.y = y0 + 0.35;
+    treeGroup.add(puffRing);
   }
-  pts.push(new THREE.Vector2(0.0, CFG.H + 0.05));
-  var bodyGeo = new THREE.LatheGeometry(pts, 48);
-  var bodyMat = new THREE.MeshStandardMaterial({ color: 0x04150f, roughness: 1.0, metalness: 0 });
-  treeGroup.add(new THREE.Mesh(bodyGeo, bodyMat));
 
-  var NF = 4400;
-  var frondGeo = new THREE.ConeGeometry(1, 1, 5, 1);
-  frondGeo.translate(0, 0.5, 0);
-  var frondMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.98, metalness: 0, flatShading: false });
-  var fronds = new THREE.InstancedMesh(frondGeo, frondMat, NF);
-  var snows = new THREE.InstancedMesh(frondGeo, new THREE.MeshStandardMaterial({
-    color: 0x93a1ab, roughness: 0.92, metalness: 0,
-    emissive: 0x0a1218, emissiveIntensity: 0.16
-  }), NF);
-  snows.count = 0;
-
+  /* 몽글한 잎 뭉치들 */
+  var NF = 1800;
+  var puffGeo = new THREE.SphereGeometry(1, 8, 7);
+  var frondMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.92, metalness: 0 });
+  var fronds = new THREE.InstancedMesh(puffGeo, frondMat, NF);
   var dummy = new THREE.Object3D();
-  var up = new V3(0, 1, 0);
-  var q = new THREE.Quaternion();
-  var dir = new V3();
   var col = new THREE.Color();
   var golden = 2.39996;
-  var snowIdx = 0;
-
   for (var k = 0; k < NF; k++) {
     var u = (k + 0.5) / NF;
-    var y = CFG.H * Math.pow(u, 0.86) * 0.982 + 0.5;
-    var ang = k * golden * 1.07 + rnd(-0.2, 0.2);
+    var y = CFG.H * Math.pow(u, 0.88) * 0.96 + 0.8;
+    var ang = k * golden * 1.15 + rnd(-0.25, 0.25);
     var surf = treeR(y);
     var rel = surf / CFG.R0;
-    var rad = surf * rnd(0.84, 0.93) + 0.15;
-    var len = (0.30 + 0.86 * rel) * rnd(0.82, 1.12);
-    if (y < CFG.H * 0.10) len *= 1.2;
-    var wid = len * rnd(0.60, 0.82);
-
-    dir.set(Math.cos(ang), rnd(-0.92, -0.52), Math.sin(ang)).normalize();
-    q.setFromUnitVectors(up, dir);
-
+    var rad = surf * rnd(0.86, 1.02);
+    var sz = (0.55 + 1.25 * rel) * rnd(0.8, 1.18);
     dummy.position.set(Math.cos(ang) * rad, y, Math.sin(ang) * rad);
-    dummy.quaternion.copy(q);
-    dummy.rotateY(rnd(-0.6, 0.6));
-    dummy.scale.set(wid, len, wid * rnd(0.6, 0.9));
+    dummy.scale.set(sz * 1.15, sz * 0.82, sz * 1.15);
     dummy.updateMatrix();
     fronds.setMatrixAt(k, dummy.matrix);
-
-    var shade = 0.55 + 0.45 * rel;
-    col.setHSL(0.355 + rnd(-0.016, 0.026), rnd(0.30, 0.48), 0.042 + 0.062 * shade + rnd(0, 0.016));
+    col.setHSL(0.39 + rnd(-0.02, 0.03), rnd(0.32, 0.46), 0.22 + 0.14 * rel + rnd(0, 0.04));
     fronds.setColorAt(k, col);
-
-    if (Math.random() < 0.20) {
-      var tip = len * 0.62;
-      dummy.position.set(
-        Math.cos(ang) * rad + dir.x * tip,
-        y + dir.y * tip + len * 0.05,
-        Math.sin(ang) * rad + dir.z * tip
-      );
-      dummy.scale.set(wid * 0.52, len * 0.26, wid * 0.40);
-      dummy.updateMatrix();
-      snows.setMatrixAt(snowIdx++, dummy.matrix);
-    }
   }
-  snows.count = snowIdx;
   fronds.instanceMatrix.needsUpdate = true;
   if (fronds.instanceColor) fronds.instanceColor.needsUpdate = true;
-  snows.instanceMatrix.needsUpdate = true;
   treeGroup.add(fronds);
-  treeGroup.add(snows);
 
   var starShape = new THREE.Shape();
   for (var s = 0; s < 10; s++) {
@@ -746,9 +767,9 @@ var pathMesh, pathEdgePts;
 (function buildPathMesh() {
   var posArr = [], colArr = [], idxArr = [];
   var rows = pathSamples.length;
-  var cCenter = new THREE.Color(0xb3c3d2);
-  var cEdge = new THREE.Color(0x72879c);
-  var cSkirt = new THREE.Color(0x121e29);
+  var cCenter = new THREE.Color(0xedf4ff);
+  var cEdge = new THREE.Color(0xc5d6f0);
+  var cSkirt = new THREE.Color(0x6c82a8);
   var down = new V3(0, -1.7, 0);
 
   for (var i = 0; i < rows; i++) {
@@ -779,7 +800,7 @@ var pathMesh, pathEdgePts;
   geo.computeVertexNormals();
   var mat = new THREE.MeshStandardMaterial({
     vertexColors: true, roughness: 0.95, metalness: 0.0,
-    emissive: 0x101e2c, emissiveIntensity: 0.5, side: THREE.DoubleSide
+    emissive: 0x2e3c5c, emissiveIntensity: 0.42, side: THREE.DoubleSide
   });
   pathMesh = new THREE.Mesh(geo, mat);
   scene.add(pathMesh);
@@ -849,64 +870,84 @@ var garland = { points: null, base: null, geo: null, count: 0, spirals: 3 };
    캐릭터 — 눈사람 코스튬
    ========================================================= */
 var MAT = {
-  snow: new THREE.MeshStandardMaterial({ color: 0xf4f9ff, roughness: 0.58, metalness: 0.03, emissive: 0x2a405e, emissiveIntensity: 0.34 }),
-  hood: new THREE.MeshStandardMaterial({ color: 0xe8f1fd, roughness: 0.72, metalness: 0.02, emissive: 0x2a3e58, emissiveIntensity: 0.30, side: THREE.DoubleSide }),
-  coal: new THREE.MeshStandardMaterial({ color: 0x101620, roughness: 0.35, metalness: 0.1 }),
-  carrot: new THREE.MeshStandardMaterial({ color: 0xff8f36, roughness: 0.5, metalness: 0.05, emissive: 0x5c1c00, emissiveIntensity: 0.5 }),
-  cheek: new THREE.MeshStandardMaterial({ color: 0xff9db0, roughness: 0.85, emissive: 0x8a2038, emissiveIntensity: 0.4 }),
-  scarf: new THREE.MeshStandardMaterial({ color: 0xd93f4a, roughness: 0.78, metalness: 0.0 }),
-  scarfPale: new THREE.MeshStandardMaterial({ color: 0xffd8c9, roughness: 0.85 }),
-  boot: new THREE.MeshStandardMaterial({ color: 0x1f2740, roughness: 0.55, metalness: 0.1 }),
-  mitten: new THREE.MeshStandardMaterial({ color: 0xc5303b, roughness: 0.7 }),
-  gold: new THREE.MeshStandardMaterial({ color: 0xffcf6a, roughness: 0.25, metalness: 0.85, emissive: 0x6a3f00, emissiveIntensity: 0.5 }),
-  silver: new THREE.MeshStandardMaterial({ color: 0xd9e3ee, roughness: 0.24, metalness: 0.92, emissive: 0x2a3546, emissiveIntensity: 0.4 }),
-  white: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.6 })
+  snow: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.55, metalness: 0.02, emissive: 0x4c5e8a, emissiveIntensity: 0.38 }),
+  coal: new THREE.MeshStandardMaterial({ color: 0x1a1e28, roughness: 0.4, metalness: 0.05 }),
+  btnRed: new THREE.MeshStandardMaterial({ color: 0xff6273, roughness: 0.45, emissive: 0x6a1420, emissiveIntensity: 0.45 }),
+  cheek: new THREE.MeshStandardMaterial({ color: 0xffb6c8, roughness: 0.85, emissive: 0x8a3448, emissiveIntensity: 0.35 }),
+  gold: new THREE.MeshStandardMaterial({ color: 0xffe08a, roughness: 0.28, metalness: 0.75, emissive: 0x6a4900, emissiveIntensity: 0.45 }),
+  white: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.55 })
 };
 
 var GEO = {
-  body: new THREE.SphereGeometry(0.68, 22, 16),
-  head: new THREE.SphereGeometry(0.52, 22, 16),
-  hood: new THREE.SphereGeometry(0.585, 24, 18, Math.PI * 0.75, Math.PI * 1.5, 0, Math.PI * 0.80),
-  rim: new THREE.TorusGeometry(0.545, 0.085, 8, 26),
-  eye: new THREE.SphereGeometry(0.075, 12, 10),
-  speck: new THREE.SphereGeometry(0.026, 8, 8),
-  cheek: new THREE.SphereGeometry(0.105, 10, 8),
-  nose: new THREE.ConeGeometry(0.082, 0.40, 10),
-  button: new THREE.SphereGeometry(0.058, 8, 8),
-  mouth: new THREE.TorusGeometry(0.088, 0.017, 6, 14, Math.PI),
-  arm: new THREE.CapsuleGeometry(0.088, 0.30, 4, 8),
-  mitten: new THREE.SphereGeometry(0.155, 12, 10),
-  leg: new THREE.CapsuleGeometry(0.10, 0.14, 4, 8),
-  foot: new THREE.SphereGeometry(0.155, 12, 10),
-  scarf: new THREE.TorusGeometry(0.40, 0.115, 8, 22),
-  tail: new THREE.BoxGeometry(0.20, 0.50, 0.085),
-  bulb: new THREE.SphereGeometry(0.265, 18, 14),
-  wire: new THREE.CylinderGeometry(0.014, 0.014, 0.5, 6),
-  cap: new THREE.CylinderGeometry(0.082, 0.104, 0.11, 10)
+  body: new THREE.SphereGeometry(0.72, 24, 18),
+  head: new THREE.SphereGeometry(0.58, 24, 18),
+  eye: new THREE.SphereGeometry(0.068, 12, 10),
+  cheek: new THREE.SphereGeometry(0.092, 10, 8),
+  button: new THREE.SphereGeometry(0.064, 10, 8),
+  mouthLeg: new THREE.CapsuleGeometry(0.020, 0.075, 4, 6),
+  arm: new THREE.CapsuleGeometry(0.052, 0.24, 4, 8),
+  leg: new THREE.CapsuleGeometry(0.058, 0.22, 4, 8),
+  foot: new THREE.SphereGeometry(0.088, 10, 8),
+  earBunny: new THREE.CapsuleGeometry(0.115, 0.32, 6, 10),
+  earBear: new THREE.SphereGeometry(0.17, 14, 12),
+  earCat: new THREE.ConeGeometry(0.16, 0.30, 12),
+  bulb: new THREE.SphereGeometry(0.24, 18, 14),
+  wire: new THREE.CylinderGeometry(0.014, 0.014, 0.34, 6),
+  cap: new THREE.CylinderGeometry(0.078, 0.098, 0.10, 10)
 };
 
+var EAR_TYPES = ['bunny', 'bear', 'cat', 'bald'];
+
 /* 장식 재료 */
-var MAT_GOLD = new THREE.MeshStandardMaterial({ color: 0xffc94d, metalness: 0.9, roughness: 0.22, emissive: 0x6b3d00, emissiveIntensity: 0.55 });
-var MAT_RED = new THREE.MeshStandardMaterial({ color: 0xe23b4a, metalness: 0.5, roughness: 0.3, emissive: 0x6a0f18, emissiveIntensity: 0.5 });
-var MAT_CANDY = new THREE.MeshStandardMaterial({ map: TEX_STRIPE, roughness: 0.35, metalness: 0.05, emissive: 0x3a2028, emissiveIntensity: 0.3 });
-var MAT_GIFT = new THREE.MeshStandardMaterial({ color: 0x3f8f6f, roughness: 0.5, metalness: 0.1, emissive: 0x0c2a20, emissiveIntensity: 0.4 });
+var MAT_GOLD = new THREE.MeshStandardMaterial({ color: 0xffe08a, metalness: 0.7, roughness: 0.28, emissive: 0x6b4d00, emissiveIntensity: 0.45 });
+var MAT_RED = new THREE.MeshStandardMaterial({ color: 0xff7b8f, metalness: 0.35, roughness: 0.32, emissive: 0x6a1f2d, emissiveIntensity: 0.4 });
+var MAT_CANDY = new THREE.MeshStandardMaterial({ map: TEX_STRIPE, roughness: 0.35, metalness: 0.05, emissive: 0x4a2a38, emissiveIntensity: 0.3 });
+var MAT_GIFT = new THREE.MeshStandardMaterial({ color: 0x76d6b4, roughness: 0.48, metalness: 0.08, emissive: 0x164a38, emissiveIntensity: 0.35 });
 
 function decoGlow(color, scale, op) {
   var s = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: TEX_GLOW, color: color, transparent: true, opacity: op == null ? 0.75 : op,
+    map: TEX_GLOW, color: color, transparent: true, opacity: op == null ? 0.65 : op,
     blending: THREE.AdditiveBlending, depthWrite: false
   }));
   s.scale.set(scale, scale, 1);
   return s;
 }
 
-function makeChar(simple) {
+function addEarsTo(headGroup, earType) {
+  if (earType === 'bunny') {
+    [-1, 1].forEach(function (sgn) {
+      var e = new THREE.Mesh(GEO.earBunny, MAT.snow);
+      e.position.set(sgn * 0.23, 0.68, 0);
+      e.rotation.z = -sgn * 0.14;
+      e.scale.set(1, 1.05, 0.75);
+      headGroup.add(e);
+    });
+  } else if (earType === 'bear') {
+    [-1, 1].forEach(function (sgn) {
+      var e = new THREE.Mesh(GEO.earBear, MAT.snow);
+      e.position.set(sgn * 0.38, 0.44, 0);
+      e.scale.set(1, 0.95, 0.65);
+      headGroup.add(e);
+    });
+  } else if (earType === 'cat') {
+    [-1, 1].forEach(function (sgn) {
+      var e = new THREE.Mesh(GEO.earCat, MAT.snow);
+      e.position.set(sgn * 0.33, 0.48, 0);
+      e.rotation.z = -sgn * 0.28;
+      e.scale.set(1, 1.0, 0.75);
+      headGroup.add(e);
+    });
+  }
+}
+
+function makeChar(simple, earType) {
   var root = new THREE.Group();
   var bodyG = new THREE.Group();
   root.add(bodyG);
+  var et = earType || pick(EAR_TYPES);
 
   var shadow = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 1.9), new THREE.MeshBasicMaterial({
-    map: TEX_SHADOW, transparent: true, depthWrite: false, opacity: 0.85
+    map: TEX_SHADOW, transparent: true, depthWrite: false, opacity: 0.55
   }));
   shadow.rotation.x = -Math.PI / 2;
   shadow.position.y = 0.04;
@@ -915,137 +956,111 @@ function makeChar(simple) {
   var legs = [];
   [-1, 1].forEach(function (sgn) {
     var leg = new THREE.Group();
-    var l = new THREE.Mesh(GEO.leg, MAT.boot);
-    l.position.y = 0.30;
+    var l = new THREE.Mesh(GEO.leg, MAT.coal);
+    l.position.y = 0.20;
     leg.add(l);
-    var f = new THREE.Mesh(GEO.foot, MAT.boot);
-    f.scale.set(1.12, 0.78, 1.45);
-    f.position.set(0, 0.13, 0.06);
+    var f = new THREE.Mesh(GEO.foot, MAT.coal);
+    f.scale.set(1.0, 0.78, 1.35);
+    f.position.set(0, 0.08, 0.04);
     leg.add(f);
-    leg.position.set(sgn * 0.25, 0, 0);
+    leg.position.set(sgn * 0.22, 0, 0);
     bodyG.add(leg);
     legs.push(leg);
   });
 
   var body = new THREE.Mesh(GEO.body, MAT.snow);
-  body.position.y = 1.04;
-  body.scale.set(1.0, 0.99, 0.94);
+  body.position.y = 0.94;
+  body.scale.set(1.08, 0.92, 0.98);
   bodyG.add(body);
 
-  var scarf = new THREE.Mesh(GEO.scarf, MAT.scarf);
-  scarf.position.y = 1.63;
-  scarf.scale.set(1, 0.86, 1);
-  bodyG.add(scarf);
-  var tail = new THREE.Mesh(GEO.tail, MAT.scarf);
-  tail.position.set(0.24, 1.34, -0.46);
-  tail.rotation.set(0.16, 0.1, 0.16);
-  bodyG.add(tail);
-  var tailEnd = new THREE.Mesh(new THREE.BoxGeometry(0.20, 0.10, 0.085), MAT.scarfPale);
-  tailEnd.position.set(0.285, 1.09, -0.50);
-  tailEnd.rotation.set(0.16, 0.1, 0.16);
-  bodyG.add(tailEnd);
+  var headGroup = new THREE.Group();
+  headGroup.position.y = 1.92;
+  bodyG.add(headGroup);
 
   var head = new THREE.Mesh(GEO.head, MAT.snow);
-  head.position.y = 2.02;
-  bodyG.add(head);
+  head.scale.set(1.14, 0.95, 1.02);
+  headGroup.add(head);
 
-  var hood = new THREE.Mesh(GEO.hood, MAT.hood);
-  hood.position.y = 2.02;
-  hood.scale.set(1.02, 1.03, 1.02);
-  bodyG.add(hood);
-  var rim = new THREE.Mesh(GEO.rim, MAT.hood);
-  rim.position.set(0, 2.02, 0.03);
-  rim.scale.set(1, 1.03, 1);
-  bodyG.add(rim);
+  /* 랜덤 흰색 귀 (토끼/곰/고양이/민머리) */
+  addEarsTo(headGroup, et);
 
   if (!simple) {
+    /* 그림(IMG_5138)처럼 양옆으로 벌어진 까만 눈 + 귀여운 ^ 입 */
     [-1, 1].forEach(function (sgn) {
       var eye = new THREE.Mesh(GEO.eye, MAT.coal);
-      eye.position.set(sgn * 0.185, 2.10, 0.415);
-      bodyG.add(eye);
-      var spec = new THREE.Mesh(GEO.speck, MAT.white);
-      spec.position.set(sgn * 0.185 + 0.022, 2.135, 0.475);
-      bodyG.add(spec);
+      eye.position.set(sgn * 0.24, 0.06, 0.535);
+      headGroup.add(eye);
       var ch = new THREE.Mesh(GEO.cheek, MAT.cheek);
-      ch.position.set(sgn * 0.305, 1.955, 0.325);
-      ch.scale.set(1, 0.72, 0.5);
-      bodyG.add(ch);
+      ch.position.set(sgn * 0.36, -0.06, 0.455);
+      ch.scale.set(1, 0.65, 0.4);
+      headGroup.add(ch);
     });
-    var nose = new THREE.Mesh(GEO.nose, MAT.carrot);
-    nose.position.set(0, 2.0, 0.58);
-    nose.rotation.x = Math.PI / 2;
-    bodyG.add(nose);
-    var mouth = new THREE.Mesh(GEO.mouth, MAT.coal);
-    mouth.position.set(0, 1.915, 0.44);
-    mouth.rotation.z = Math.PI;
-    bodyG.add(mouth);
-    [[0, 1.34, 0.545], [0, 1.08, 0.625], [0, 0.83, 0.58]].forEach(function (p) {
-      var b = new THREE.Mesh(GEO.button, MAT.coal);
+    [-1, 1].forEach(function (sgn) {
+      var ml = new THREE.Mesh(GEO.mouthLeg, MAT.coal);
+      ml.position.set(sgn * 0.036, -0.075, 0.575);
+      ml.rotation.z = sgn * 0.68;
+      headGroup.add(ml);
+    });
+    /* 배 가운데 빨간 단추 2개 */
+    [[0, 1.15, 0.68], [0, 0.82, 0.69]].forEach(function (p) {
+      var b = new THREE.Mesh(GEO.button, MAT.btnRed);
       b.position.set(p[0], p[1], p[2]);
       bodyG.add(b);
     });
-    var front = new THREE.Mesh(new THREE.BoxGeometry(0.17, 0.34, 0.08), MAT.scarf);
-    front.position.set(-0.20, 1.42, 0.40);
-    front.rotation.set(-0.12, 0, -0.13);
-    bodyG.add(front);
   } else {
-    var nose2 = new THREE.Mesh(GEO.nose, MAT.carrot);
-    nose2.position.set(0, 2.0, 0.56);
-    nose2.rotation.x = Math.PI / 2;
-    bodyG.add(nose2);
+    [[0, 1.15, 0.68], [0, 0.82, 0.69]].forEach(function (p) {
+      var b = new THREE.Mesh(GEO.button, MAT.btnRed);
+      b.position.set(p[0], p[1], p[2]);
+      bodyG.add(b);
+    });
   }
 
+  /* 얇고 귀여운 까만 나뭇가지 팔 2개 */
   var arms = [];
   [-1, 1].forEach(function (sgn) {
     var arm = new THREE.Group();
-    arm.position.set(sgn * 0.56, 1.34, 0);
-    arm.rotation.z = sgn * 0.30;
-    var a = new THREE.Mesh(GEO.arm, MAT.snow);
-    a.position.y = -0.18;
+    arm.position.set(sgn * 0.72, 1.06, 0);
+    arm.rotation.z = sgn * 0.75;
+    var a = new THREE.Mesh(GEO.arm, MAT.coal);
+    a.position.y = -0.14;
     arm.add(a);
-    if (!simple) {
-      var m = new THREE.Mesh(GEO.mitten, MAT.mitten);
-      m.position.y = -0.44;
-      arm.add(m);
-    }
     bodyG.add(arm);
     arms.push(arm);
   });
 
-  /* 머리 위 전구 — v3에서 더 크게 */
+  /* 머리 위 파스텔 전구 */
   var bulbMat = new THREE.MeshStandardMaterial({
-    color: 0xffffff, roughness: 0.25, metalness: 0.1,
-    emissive: 0xffffff, emissiveIntensity: 2.4
+    color: 0xffffff, roughness: 0.25, metalness: 0.05,
+    emissive: 0xffffff, emissiveIntensity: 2.2
   });
   var bulbGroup = new THREE.Group();
-  bulbGroup.position.y = 3.02;
+  bulbGroup.position.y = (et === 'bunny') ? 2.95 : 2.74;
   var wire = new THREE.Mesh(GEO.wire, MAT.coal);
-  wire.position.y = -0.30;
+  wire.position.y = -0.22;
   bulbGroup.add(wire);
   var capM = new THREE.Mesh(GEO.cap, MAT.gold);
-  capM.position.y = -0.15;
+  capM.position.y = -0.12;
   bulbGroup.add(capM);
   var bulb = new THREE.Mesh(GEO.bulb, bulbMat);
   bulbGroup.add(bulb);
   var glow = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: TEX_GLOW, color: 0xffffff, transparent: true, opacity: 0.72,
+    map: TEX_GLOW, color: 0xffffff, transparent: true, opacity: 0.68,
     blending: THREE.AdditiveBlending, depthWrite: false
   }));
-  glow.scale.set(2.35, 2.35, 1);
+  glow.scale.set(2.3, 2.3, 1);
   bulbGroup.add(glow);
   bodyG.add(bulbGroup);
 
-  /* 멀리서도 전구가 영롱하게 — 트리 뷰에서만 켜지는 큰 헤일로 */
   var halo = new THREE.Sprite(new THREE.SpriteMaterial({
     map: TEX_GLOW, color: 0xffffff, transparent: true, opacity: 0,
     blending: THREE.AdditiveBlending, depthWrite: false
   }));
-  halo.scale.set(9.0, 9.0, 1);
-  halo.position.y = 3.04;
+  halo.scale.set(8.8, 8.8, 1);
+  halo.position.y = bulbGroup.position.y;
   bodyG.add(halo);
 
   return {
-    root: root, body: bodyG, head: head, hood: hood,
+    root: root, body: bodyG, head: headGroup, hood: headGroup, earType: et,
     arms: arms, legs: legs, bulb: bulbGroup, bulbMat: bulbMat, glow: glow, halo: halo, shadow: shadow
   };
 }
@@ -1053,7 +1068,7 @@ function makeChar(simple) {
 function tintChar(c, col) {
   c.bulbMat.emissive.setHex(col.hex);
   c.bulbMat.color.setHex(col.hex);
-  c.bulbMat.emissiveIntensity = 2.4;
+  c.bulbMat.emissiveIntensity = 2.2;
   c.glow.material.color.setHex(col.hex);
   c.halo.material.color.setHex(col.hex);
 }
@@ -1067,7 +1082,8 @@ var me = {
   bumpT: 0
 };
 me.color = pick(PALETTE);
-var meChar = makeChar(false);
+var myEar = pick(EAR_TYPES);
+var meChar = makeChar(false, myEar);
 scene.add(meChar.root);
 var meLight = new THREE.PointLight(me.color.hex, 16, 16, 2.0);
 meLight.position.y = 3.1;
@@ -1510,8 +1526,8 @@ var WishSky = (function () {
 
   function slot(i) {
     var ang = (i * 2.39996) % TAU;
-    var r = 3.2 + (i % 3) * 3.0;
-    var y = CFG.H + 10.5 + (i % 4) * 4.6;
+    var r = 18 + (i % 3) * 11;
+    var y = CFG.H * 0.56 + (i % 4) * 9.5;
     return new V3(Math.cos(ang) * r, y, Math.sin(ang) * r);
   }
 
@@ -1525,7 +1541,7 @@ var WishSky = (function () {
     if (items.length >= MAX) removeAt(0);
 
     var tex = makeLabel(text, nick);
-    var h = 9.4, w = h * (1024 / 360);
+    var h = 14.5, w = h * (1024 / 360);
     var sprite = new THREE.Sprite(new THREE.SpriteMaterial({
       map: tex, transparent: true, opacity: 0, depthWrite: false, fog: false
     }));
@@ -1842,17 +1858,17 @@ function desiredCamera(outPos, outLook) {
   var cs = Math.cos(yaw), sn = Math.sin(yaw);
   var hx = bx * cs - bz * sn, hz = bx * sn + bz * cs;
 
-  var dTrail = 12.2;
+  var dTrail = 10.2;
   var pitch = camRig.pitch;
-  var lookAhead = 3.0 * Math.cos(yaw);
+  var lookAhead = 2.2 * Math.cos(yaw);
   outPos.set(
     mePos.x + hx * dTrail,
-    mePos.y + 1.55 + 10.6 * Math.sin(pitch),
+    mePos.y + 1.45 + 8.8 * Math.sin(pitch),
     mePos.z + hz * dTrail
   );
   outLook.set(
     mePos.x + meFwd.x * lookAhead,
-    mePos.y + 2.15,
+    mePos.y + 1.55,
     mePos.z + meFwd.z * lookAhead
   );
 
@@ -2431,7 +2447,7 @@ function updateFX(dt) {
   } else {
     FX.snow = lerp(FX.snow, 0, 1 - Math.exp(-dt * 1.1));
   }
-  scene.fog.density = 0.0050 + 0.0026 * FX.snow;
+  scene.fog.density = 0.0033 + 0.0014 * FX.snow;
 
   if (puff.active) {
     puff.t += dt;
@@ -2463,8 +2479,8 @@ function updateSnow(dt) {
     if (arr[ix + 2] < cz - R) arr[ix + 2] += R * 2; else if (arr[ix + 2] > cz + R) arr[ix + 2] -= R * 2;
   }
   snowGeo.attributes.position.needsUpdate = true;
-  snowPts.material.size = 0.26 + 0.5 * s0;
-  snowPts.material.opacity = 0.78 + 0.22 * s0;
+  snowPts.material.size = 0.22 + 0.26 * s0;
+  snowPts.material.opacity = 0.58 + 0.22 * s0;
 }
 
 /* =========================================================
@@ -2495,7 +2511,7 @@ function burstMe() {
   screenFlash();
   if (audio.on) sfxPop();
   meChar.root.visible = false;
-  startSnow(13, 1);
+  startSnow(12, 0.55);
   camShake(0.5);
 }
 
