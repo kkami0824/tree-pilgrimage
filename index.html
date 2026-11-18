@@ -210,6 +210,7 @@
     .joy{width:86px;height:86px;bottom:calc(env(safe-area-inset-bottom,0px) + 120px);}
     .joy .knob{width:38px;height:38px;}
   }
+  body.clean .hud, body.clean .joy, body.clean .ret, body.clean .hint{display:none!important;}
 </style>
 </head>
 <body>
@@ -322,6 +323,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
    ========================================================= */
 (function () {
 'use strict';
+if (location.search.indexOf('hud=0') !== -1) document.body.classList.add('clean');
 
 var TAU = Math.PI * 2;
 var clamp = function (v, a, b) { return v < a ? a : (v > b ? b : v); };
@@ -542,39 +544,59 @@ buildSky();
 /* ---------- 땅 ---------- */
 function makeCottage(scale) {
   var g = new THREE.Group();
-  var wallMat = new THREE.MeshStandardMaterial({ color: 0xffe8d6, roughness: 0.85, emissive: 0x2b2018, emissiveIntensity: 0.25 });
-  var roofMat = new THREE.MeshStandardMaterial({ color: 0xf4f8ff, roughness: 0.8, emissive: 0x3a4868, emissiveIntensity: 0.28 });
-  var trimMat = new THREE.MeshStandardMaterial({ color: 0xba8b73, roughness: 0.9 });
-  var winMat = new THREE.MeshBasicMaterial({ color: 0xffe48f });
-  var body = new THREE.Mesh(new THREE.BoxGeometry(4.2, 2.8, 3.6), wallMat);
-  body.position.y = 1.4;
+  var wallMat = new THREE.MeshLambertMaterial({ color: 0xfff0e4, emissive: 0x5c473e, emissiveIntensity: 0.45 });
+  var roofMat = new THREE.MeshLambertMaterial({ color: 0xf6f9ff, emissive: 0x566890, emissiveIntensity: 0.42 });
+  var trimMat = new THREE.MeshLambertMaterial({ color: 0xcfa48e, emissive: 0x453129, emissiveIntensity: 0.35 });
+  var winMat = new THREE.MeshBasicMaterial({ color: 0xffeaa8 });
+
+  /* 동글동글 버섯·오두막 몸통 */
+  var body = new THREE.Mesh(new THREE.CylinderGeometry(2.1, 2.35, 2.3, 24), wallMat);
+  body.position.y = 1.15;
   g.add(body);
-  var roof = new THREE.Mesh(new THREE.ConeGeometry(3.55, 2.4, 4), roofMat);
-  roof.position.y = 3.9;
-  roof.rotation.y = Math.PI / 4;
+
+  /* 포근한 둥근 눈 지붕 */
+  var roof = new THREE.Mesh(new THREE.SphereGeometry(2.55, 24, 16, 0, Math.PI * 2, 0, Math.PI * 0.54), roofMat);
+  roof.position.y = 2.15;
+  roof.scale.set(1.06, 0.85, 1.06);
   g.add(roof);
-  var chim = new THREE.Mesh(new THREE.BoxGeometry(0.65, 1.2, 0.65), trimMat);
-  chim.position.set(1.0, 4.1, -0.5);
+
+  /* 지붕 테두리 눈 띠 */
+  var brim = new THREE.Mesh(new THREE.TorusGeometry(2.45, 0.34, 12, 24), roofMat);
+  brim.rotation.x = Math.PI / 2;
+  brim.position.y = 2.22;
+  g.add(brim);
+
+  /* 둥근 굴뚝 */
+  var chim = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.40, 1.1, 14), trimMat);
+  chim.position.set(0.95, 3.65, -0.45);
   g.add(chim);
-  var door = new THREE.Mesh(new THREE.BoxGeometry(0.85, 1.5, 0.12), trimMat);
-  door.position.set(0, 0.75, 1.82);
+
+  /* 둥근 아치형 문 */
+  var door = new THREE.Mesh(new THREE.CapsuleGeometry(0.42, 0.65, 8, 12), trimMat);
+  door.position.set(0, 0.72, 2.15);
   g.add(door);
-  [-1.15, 1.15].forEach(function (wx) {
-    var w = new THREE.Mesh(new THREE.PlaneGeometry(0.72, 0.72), winMat);
-    w.position.set(wx, 1.65, 1.82);
+
+  /* 동그란 따뜻한 불빛 창문들 */
+  [-1.12, 1.12].forEach(function (wx) {
+    var w = new THREE.Mesh(new THREE.CircleGeometry(0.42, 18), winMat);
+    w.position.set(wx, 1.35, 2.02);
+    w.rotation.y = wx < 0 ? -0.42 : 0.42;
     g.add(w);
   });
-  var wSide = new THREE.Mesh(new THREE.PlaneGeometry(0.75, 0.75), winMat);
-  wSide.position.set(2.12, 1.65, 0);
+  var wSide = new THREE.Mesh(new THREE.CircleGeometry(0.44, 18), winMat);
+  wSide.position.set(2.26, 1.35, 0);
   wSide.rotation.y = Math.PI / 2;
   g.add(wSide);
+
+  /* 포근하게 번지는 창문 빛 */
   var wg = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: TEX_GLOW, color: 0xffd778, transparent: true, opacity: 0.42,
+    map: TEX_GLOW, color: 0xffdf96, transparent: true, opacity: 0.56,
     blending: THREE.AdditiveBlending, depthWrite: false
   }));
-  wg.scale.set(9, 7, 1);
-  wg.position.set(0, 1.8, 2.2);
+  wg.scale.set(12, 9.5, 1);
+  wg.position.set(0, 1.8, 1.2);
   g.add(wg);
+
   g.scale.setScalar(scale || 1);
   return g;
 }
@@ -653,52 +675,41 @@ scene.add(treeGroup);
 var starGroup;
 
 function buildTree() {
-  /* 몽글몽글 층진 귀여운 트리 몸체 (7단 둥근 잎층 + 눈 테두리) */
-  var tierMat = new THREE.MeshStandardMaterial({ color: 0x2a5a4e, roughness: 0.9, metalness: 0.0, emissive: 0x0c1e1a, emissiveIntensity: 0.3 });
-  var tierSnowMat = new THREE.MeshStandardMaterial({ color: 0xeaf2ff, roughness: 0.85, emissive: 0x283654, emissiveIntensity: 0.25 });
+  /* 매끈하고 포근한 7단 솜트리 + 각 층 부드러운 눈 이불 + 은은한 글로우 */
+  var tierMat = new THREE.MeshLambertMaterial({ color: 0x356b5e, emissive: 0x16332c, emissiveIntensity: 0.52 });
+  var tierSnowMat = new THREE.MeshLambertMaterial({ color: 0xf4f8ff, emissive: 0x52648c, emissiveIntensity: 0.42 });
   var tiers = 7;
   for (var tr = 0; tr < tiers; tr++) {
     var u0 = tr / tiers;
-    var y0 = CFG.H * (u0 * 0.88) + 1.5;
-    var hTier = CFG.H * 0.22 * (1 - u0 * 0.45);
-    var rBot = treeR(y0) * 1.06;
-    var cone = new THREE.Mesh(new THREE.ConeGeometry(rBot, hTier, 24, 1), tierMat);
+    var y0 = CFG.H * (u0 * 0.87) + 1.2;
+    var hTier = CFG.H * 0.23 * (1 - u0 * 0.42);
+    var rBot = treeR(y0) * 1.05;
+    var rTop = Math.max(0.6, rBot * 0.34);
+
+    /* 뾰족하지 않고 둥글둥글한 층 */
+    var cone = new THREE.Mesh(new THREE.CylinderGeometry(rTop, rBot, hTier, 32, 1), tierMat);
     cone.position.y = y0 + hTier * 0.42;
     treeGroup.add(cone);
 
-    /* 몽글몽글한 눈 림 (각 층 아래 테두리) */
-    var puffRing = new THREE.Mesh(new THREE.TorusGeometry(rBot * 0.94, 0.55 * (1 - u0 * 0.45), 10, 24), tierSnowMat);
+    /* 각 층 아래 포근하게 번지는 눈 림 */
+    var puffRing = new THREE.Mesh(new THREE.TorusGeometry(rBot * 0.96, 0.72 * (1 - u0 * 0.38), 14, 32), tierSnowMat);
     puffRing.rotation.x = Math.PI / 2;
     puffRing.position.y = y0 + 0.35;
     treeGroup.add(puffRing);
   }
 
-  /* 몽글한 잎 뭉치들 */
-  var NF = 1800;
-  var puffGeo = new THREE.SphereGeometry(1, 8, 7);
-  var frondMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.92, metalness: 0 });
-  var fronds = new THREE.InstancedMesh(puffGeo, frondMat, NF);
-  var dummy = new THREE.Object3D();
-  var col = new THREE.Color();
-  var golden = 2.39996;
-  for (var k = 0; k < NF; k++) {
-    var u = (k + 0.5) / NF;
-    var y = CFG.H * Math.pow(u, 0.88) * 0.96 + 0.8;
-    var ang = k * golden * 1.15 + rnd(-0.25, 0.25);
-    var surf = treeR(y);
-    var rel = surf / CFG.R0;
-    var rad = surf * rnd(0.86, 1.02);
-    var sz = (0.55 + 1.25 * rel) * rnd(0.8, 1.18);
-    dummy.position.set(Math.cos(ang) * rad, y, Math.sin(ang) * rad);
-    dummy.scale.set(sz * 1.15, sz * 0.82, sz * 1.15);
-    dummy.updateMatrix();
-    fronds.setMatrixAt(k, dummy.matrix);
-    col.setHSL(0.39 + rnd(-0.02, 0.03), rnd(0.32, 0.46), 0.22 + 0.14 * rel + rnd(0, 0.04));
-    fronds.setColorAt(k, col);
+  /* 트리 전체에 보송보송 은은한 파스텔 글로우 */
+  for (var tg = 0; tg < 5; tg++) {
+    var gy = 10 + tg * 11;
+    var gs = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: TEX_GLOW, color: tg % 2 === 0 ? 0xa8e6cf : 0xffeaa8, transparent: true, opacity: 0.14,
+      blending: THREE.AdditiveBlending, depthWrite: false
+    }));
+    var gr = 42 - tg * 5;
+    gs.scale.set(gr, gr, 1);
+    gs.position.set(0, gy, 0);
+    treeGroup.add(gs);
   }
-  fronds.instanceMatrix.needsUpdate = true;
-  if (fronds.instanceColor) fronds.instanceColor.needsUpdate = true;
-  treeGroup.add(fronds);
 
   var starShape = new THREE.Shape();
   for (var s = 0; s < 10; s++) {
@@ -870,7 +881,7 @@ var garland = { points: null, base: null, geo: null, count: 0, spirals: 3 };
    캐릭터 — 눈사람 코스튬
    ========================================================= */
 var MAT = {
-  snow: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.55, metalness: 0.02, emissive: 0x4c5e8a, emissiveIntensity: 0.38 }),
+  snow: new THREE.MeshLambertMaterial({ color: 0xffffff, emissive: 0x8fa4d4, emissiveIntensity: 0.58 }),
   coal: new THREE.MeshStandardMaterial({ color: 0x1a1e28, roughness: 0.4, metalness: 0.05 }),
   btnRed: new THREE.MeshStandardMaterial({ color: 0xff6273, roughness: 0.45, emissive: 0x6a1420, emissiveIntensity: 0.45 }),
   cheek: new THREE.MeshStandardMaterial({ color: 0xffb6c8, roughness: 0.85, emissive: 0x8a3448, emissiveIntensity: 0.35 }),
@@ -972,6 +983,10 @@ function makeChar(simple, earType) {
   body.position.y = 0.94;
   body.scale.set(1.08, 0.92, 0.98);
   bodyG.add(body);
+  var softAura = new THREE.Sprite(new THREE.SpriteMaterial({ map: TEX_GLOW, color: 0xffffff, transparent: true, opacity: 0.28, blending: THREE.AdditiveBlending, depthWrite: false }));
+  softAura.scale.set(3.2, 3.6, 1);
+  softAura.position.y = 1.4;
+  bodyG.add(softAura);
 
   var headGroup = new THREE.Group();
   headGroup.position.y = 1.92;
