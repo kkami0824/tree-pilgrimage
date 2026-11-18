@@ -3175,31 +3175,12 @@ window.SantaTrail = {
 };
 
 boot();
-if (location.search.indexOf('demo=push') !== -1 && pilgrims.length > 0) {
-  var dp = pilgrims[0];
-  dp.t = 0.036;
-  dp.bumped = true;
-  dp.bumpT = 0.2;
-  dp.fallPos.copy(pathPoint(dp.t));
-  dp.fallPos.addScaledVector(pathOut(dp.t), 3.2);
-  dp.fallPos.y += 1.6;
-  dp.fallVel.set(0, 0, 0);
-  dp.fallSpin.set(0, 0, 0);
-  dp.char.root.position.copy(dp.fallPos);
-  dp.char.root.rotation.set(0.45, 0.2, -0.85);
-  var ac = document.createElement('canvas'); ac.width = 256; ac.height = 160;
-  var ag = ac.getContext('2d');
-  ag.fillStyle = 'rgba(255,255,255,0.96)';
-  ag.beginPath(); ag.roundRect(24, 16, 208, 108, 42); ag.fill();
-  ag.fillStyle = '#ff4d6d'; ag.font = 'bold 64px sans-serif';
-  ag.textAlign = 'center'; ag.textBaseline = 'middle';
-  ag.fillText('악!!', 128, 72);
-  var at = new THREE.CanvasTexture(ac);
-  var as = new THREE.Sprite(new THREE.SpriteMaterial({ map: at, transparent: true, depthTest: false }));
-  as.scale.set(3.4, 2.1, 1);
-  as.position.set(0, 3.6, 0);
-  dp.char.root.add(as);
-  camRig.k = 0.14; camRig.snap = true;
+if (location.search.indexOf('demo=front') !== -1) {
+  setView(false);
+  camRig.k = 0.05;
+  camRig.orbitYaw = Math.PI + 0.18;
+  camRig.pitch = 0.12;
+  camRig.snap = true;
 }
 
 })();
